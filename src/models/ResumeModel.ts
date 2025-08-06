@@ -1,4 +1,12 @@
-export type Contact = { email?: string; phone?: string; location?: string };
+export interface HeaderModel {
+  fullName: string;
+  title: string;
+  contacts: {
+    email: string;
+    phone: string;
+    location: string;
+  };
+}
 
 export interface Project {
   name: string;
@@ -6,7 +14,7 @@ export interface Project {
   isRecent?: boolean;
 }
 
-export interface Experience {
+export interface ExperienceItem {
   position: string;
   company: string;
   start: string;
@@ -14,23 +22,23 @@ export interface Experience {
   projects: Project[];
 }
 
-export interface Education {
+export interface EducationItem {
   degree: string;
   field: string;
   institution: string;
   graduation: string;
 }
 
-export interface Skills {
+export interface SkillsModel {
   core: string[];
   tools: string[];
   languages: string[];
 }
 
 export interface ResumeModel {
-  header: { fullName: string; title: string; contacts: Contact };
+  header: HeaderModel;
   summary: { text: string };
-  experience: Experience[];
-  education: Education[];
-  skills: Skills;
+  experience: ExperienceItem[];
+  education: EducationItem[];
+  skills: SkillsModel;
 }

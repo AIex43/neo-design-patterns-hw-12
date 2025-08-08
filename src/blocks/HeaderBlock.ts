@@ -6,15 +6,11 @@ export class HeaderBlock implements IBlock {
 
   render(): HTMLElement {
     const el = document.createElement("div");
-
     el.innerHTML = `
-      <h1>${this.header.fullName}</h1>
-      <h2 class="highlight">${this.header.title}</h2>
-      <p>Email: ${this.header.contacts.email}</p>
-      <p>Телефон: ${this.header.contacts.phone}</p>
-      <p>Місто: ${this.header.contacts.location}</p>
+      <h1>${this.header.name}</h1>
+      <h2>${this.header.position}</h2>
+      <p>${this.header.email} ${this.header.phone} ${this.header.location}</p>
     `;
-
     return el;
   }
 }

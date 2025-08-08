@@ -1,44 +1,37 @@
-export interface HeaderModel {
-  fullName: string;
-  title: string;
-  contacts: {
-    email: string;
-    phone: string;
-    location: string;
+export interface ResumeModel {
+  header: {
+    fullName: string;
+    title: string;
+    contacts: {
+      email: string;
+      phone: string;
+      location: string;
+    };
   };
+  summary: string;
+  experience: ExperienceModel[];
+  education: EducationModel[];
+  skills: SkillsModel;
 }
 
-export interface Project {
-  name: string;
-  description: string;
-  isRecent?: boolean;
-}
-
-export interface ExperienceItem {
-  position: string;
+export interface ExperienceModel {
   company: string;
-  start: string;
-  end: string;
-  projects: Project[];
+  title: string;
+  period: string;
+  projects: {
+    name: string;
+    details: string;
+  }[];
 }
 
-export interface EducationItem {
+export interface EducationModel {
+  university: string;
   degree: string;
-  field: string;
-  institution: string;
-  graduation: string;
+  year: string;
 }
 
 export interface SkillsModel {
   core: string[];
   tools: string[];
   languages: string[];
-}
-
-export interface ResumeModel {
-  header: HeaderModel;
-  summary: { text: string };
-  experience: ExperienceItem[];
-  education: EducationItem[];
-  skills: SkillsModel;
 }

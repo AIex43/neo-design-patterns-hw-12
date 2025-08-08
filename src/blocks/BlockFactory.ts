@@ -1,16 +1,16 @@
+import { ResumeModel } from "../models/ResumeModel";
 import { IBlock } from "./IBlock";
 import { HeaderBlock } from "./HeaderBlock";
 import { SummaryBlock } from "./SummaryBlock";
 import { ExperienceBlock } from "./ExperienceBlock";
 import { EducationBlock } from "./EducationBlock";
 import { SkillsBlock } from "./SkillsBlock";
-import { ResumeModel } from "../models/ResumeModel";
 
 export class BlockFactory {
   constructor(private model: ResumeModel) {}
 
-  createBlock(type: string): IBlock | null {
-    switch (type) {
+  createBlock(section: keyof ResumeModel): IBlock {
+    switch (section) {
       case "header":
         return new HeaderBlock(this.model.header);
       case "summary":
@@ -22,7 +22,8 @@ export class BlockFactory {
       case "skills":
         return new SkillsBlock(this.model.skills);
       default:
-        return null;
+        throw new Error(`Unknown section: ${section}`);
     }
   }
 }
+

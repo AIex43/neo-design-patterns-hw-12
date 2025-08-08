@@ -13,30 +13,32 @@ export class SkillsBlock implements IBlock {
     const el = document.createElement("div");
     el.innerHTML = "<h2>Skills</h2>";
 
-    const renderSkillList = (title: string, items: string[]) => {
-      const container = document.createElement("div");
+    const ul = document.createElement("ul");
+    ul.style.listStyleType = "square";
 
-      const label = document.createElement("strong");
-      label.textContent = `${title}: `;
-      container.appendChild(label);
 
-      const ul = document.createElement("ul");
-      ul.style.listStyleType = "square"; // 🟦 квадратні позначення
-      ul.style.paddingLeft = "20px";
-      items.forEach(skill => {
-        const li = document.createElement("li");
-        li.textContent = skill;
-        ul.appendChild(li);
-      });
+    const addSkillItem = (label: string, values: string[]) => {
+      const li = document.createElement("li");
 
-      container.appendChild(ul);
-      return container;
+
+      const bold = document.createElement("strong");
+      bold.textContent = `${label}: `;
+
+
+      const span = document.createElement("span");
+      span.textContent = values.join(", ");
+
+
+      li.appendChild(bold);
+      li.appendChild(span);
+      ul.appendChild(li);
     };
 
-    el.appendChild(renderSkillList("core", this.skills.core));
-    el.appendChild(renderSkillList("tools", this.skills.tools));
-    el.appendChild(renderSkillList("languages", this.skills.languages));
+    addSkillItem("core", this.skills.core);
+    addSkillItem("tools", this.skills.tools);
+    addSkillItem("languages", this.skills.languages);
 
+    el.appendChild(ul);
     return el;
   }
 }

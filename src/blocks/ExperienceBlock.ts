@@ -26,7 +26,7 @@ export class ExperienceBlock implements IBlock {
       const ul = document.createElement("ul");
       ul.style.listStyleType = "disc";
       ul.style.paddingLeft = "20px";
-      ul.style.color = index === 0 ? "red" : "black"; // 🔴 перший досвід — червоний, інші — чорні
+      ul.style.color = index === 0 ? "red" : "black"; 
 
       job.projects.forEach(proj => {
         const li = document.createElement("li");

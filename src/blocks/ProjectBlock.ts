@@ -1,4 +1,3 @@
-
 import { IBlock } from "./IBlock";
 import { ProjectModel } from "../models/ResumeModel";
 import { HighlightDecorator } from "../decorators/HighlightDecorator";

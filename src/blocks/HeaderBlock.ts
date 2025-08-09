@@ -6,10 +6,12 @@ export class HeaderBlock implements IBlock {
 
   render(): HTMLElement {
     const el = document.createElement("div");
+    el.className = "section header";
+
     el.innerHTML = `
       <h1>${this.header.name}</h1>
-      <h2>${this.header.position}</h2>
-      <p>${this.header.email} ${this.header.phone} ${this.header.location}</p>
+      <div class="title">${this.header.position}</div>
+      <div class="contacts">${this.header.email} ${this.header.phone} ${this.header.location}</div>
     `;
     return el;
   }

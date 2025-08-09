@@ -5,7 +5,9 @@ export class SummaryBlock implements IBlock {
 
   render(): HTMLElement {
     const el = document.createElement("div");
-    el.innerHTML = `<h2>Summary</h2><p>${this.summary.text}</p>`;
+    el.className = "section summary";
+    el.innerHTML = `<strong class="section-title">Summary</strong>
+                    <p>${this.summary.text}</p>`;
     return el;
   }
 }

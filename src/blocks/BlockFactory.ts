@@ -1,5 +1,6 @@
-import { ResumeModel } from "../models/ResumeModel";
+// src/blocks/BlockFactory.ts
 import { IBlock } from "./IBlock";
+import { ResumeModel } from "../models/ResumeModel";
 import { HeaderBlock } from "./HeaderBlock";
 import { SummaryBlock } from "./SummaryBlock";
 import { ExperienceBlock } from "./ExperienceBlock";
@@ -14,6 +15,7 @@ export class BlockFactory {
       case "header":
         return new HeaderBlock(this.model.header);
       case "summary":
+        // SummaryBlock очікує { text: string }
         return new SummaryBlock(this.model.summary);
       case "experience":
         return new ExperienceBlock(this.model.experience);
@@ -22,8 +24,7 @@ export class BlockFactory {
       case "skills":
         return new SkillsBlock(this.model.skills);
       default:
-        throw new Error(`Unknown section: ${section}`);
+        throw new Error(`Unknown section: ${String(section)}`);
     }
   }
 }
-

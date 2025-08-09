@@ -8,7 +8,7 @@ body {
 }
 
 h1 {
-    margin-bottom: 0;
+    margin-bottom: 1;
 }
 
 h2 {
@@ -17,9 +17,8 @@ h2 {
     font-size: 1.25rem;
 }
 
-.highlight {
-    color: #c0392b; /* червоний акцент */
-}
+
+
 
 .section {
     margin-top: 1rem;

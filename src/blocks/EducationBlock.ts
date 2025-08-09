@@ -1,23 +1,21 @@
 import { IBlock } from "./IBlock";
-
-interface Education {
-  degree: string;
-  field: string;
-  institution: string;
-  year: string;
-}
+import { EducationItem } from "../models/ResumeModel";
 
 export class EducationBlock implements IBlock {
-  constructor(private education: Education[]) {}
+  constructor(private education: EducationItem[]) {}
 
   render(): HTMLElement {
     const el = document.createElement("div");
-    el.innerHTML = "<h2>Education</h2>";
-    this.education.forEach(edu => {
+    el.className = "section education";
+    el.innerHTML = `<strong class="section-title">Education</strong>`;
+
+    this.education.forEach((edu) => {
       const p = document.createElement("p");
-      p.textContent = `${edu.degree}, ${edu.field}, ${edu.institution} (${edu.year})`;
+      p.className = "education-item";
+      p.textContent = `${edu.degree} ${edu.field}, ${edu.institution} (${edu.year})`;
       el.appendChild(p);
     });
+
     return el;
   }
 }

@@ -1,42 +1,29 @@
 import { IBlock } from "./IBlock";
-
-interface Skills {
-  core: string[];
-  tools: string[];
-  languages: string[];
-}
+import { SkillsModel } from "../models/ResumeModel";
 
 export class SkillsBlock implements IBlock {
-  constructor(private skills: Skills) {}
+  constructor(private skills: SkillsModel) {}
 
   render(): HTMLElement {
     const el = document.createElement("div");
-    el.innerHTML = "<h2>Skills</h2>";
+    el.className = "section skills";
+    el.innerHTML = `<strong class="section-title">Skills</strong>`;
 
     const ul = document.createElement("ul");
-    ul.style.listStyleType = "square";
+    ul.className = "skills-list";
 
-
-    const addSkillItem = (label: string, values: string[]) => {
+    const addLine = (label: string, values: string[]) => {
       const li = document.createElement("li");
-
-
-      const bold = document.createElement("strong");
-      bold.textContent = `${label}: `;
-
-
-      const span = document.createElement("span");
-      span.textContent = values.join(", ");
-
-
-      li.appendChild(bold);
-      li.appendChild(span);
+      const strong = document.createElement("strong");
+      strong.textContent = `${label}:`;
+      li.appendChild(strong);
+      li.appendChild(document.createTextNode(" " + values.join(", ")));
       ul.appendChild(li);
     };
 
-    addSkillItem("core", this.skills.core);
-    addSkillItem("tools", this.skills.tools);
-    addSkillItem("languages", this.skills.languages);
+    addLine("core", this.skills.core);
+    addLine("tools", this.skills.tools);
+    addLine("languages", this.skills.languages);
 
     el.appendChild(ul);
     return el;

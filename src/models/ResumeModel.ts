@@ -1,14 +1,4 @@
 // src/models/ResumeModel.ts
-export interface HeaderModel {
-  fullName: string;
-  title: string;
-  contacts: {
-    email: string;
-    phone: string;
-    location: string;
-  };
-}
-
 export interface ProjectModel {
   name: string;
   details: string;
@@ -24,7 +14,7 @@ export interface ExperienceItem {
 
 export interface EducationItem {
   degree: string;
-  field?: string;
+  field: string;
   institution: string;
   year: string;
 }
@@ -36,8 +26,14 @@ export interface SkillsModel {
 }
 
 export interface ResumeModel {
-  header: HeaderModel;
-  summary: { text: string } | string;
+  header: {
+    name: string;
+    position: string;
+    email: string;
+    phone: string;
+    location: string;
+  };
+  summary: { text: string };
   experience: ExperienceItem[];
   education: EducationItem[];
   skills: SkillsModel;

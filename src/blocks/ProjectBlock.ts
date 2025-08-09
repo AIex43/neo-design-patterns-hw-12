@@ -1,13 +1,19 @@
+
 import { IBlock } from "./IBlock";
-import { Project } from "../models/ResumeModel";
+import { ProjectModel } from "../models/ResumeModel";
 import { HighlightDecorator } from "../decorators/HighlightDecorator";
 
 export class ProjectBlock implements IBlock {
-  constructor(private project: Project) {}
+  constructor(private project: ProjectModel) {}
 
   render(): HTMLElement {
     const el = document.createElement("div");
-    el.innerHTML = `<h4>${this.project.name}</h4><p>${this.project.description}</p>`;
-    return this.project.isRecent ? HighlightDecorator.decorate(el) : el;
+    el.className = "project-item";
+    el.innerHTML = `<strong>${this.project.name}</strong> – ${this.project.details}`;
+
+    if (this.project.isRecent) {
+      return HighlightDecorator.decorate(el);
+    }
+    return el;
   }
 }
